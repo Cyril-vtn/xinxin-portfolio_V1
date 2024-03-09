@@ -184,3 +184,28 @@ window.addEventListener("touchmove", (e) => {
 window.addEventListener("touchend", () => {
   isTouching = false;
 });
+
+window.onload = function () {
+  // Sélectionnez tous les éléments <span> dans le préloader
+  const letters = document.querySelectorAll("#preloader-inner span");
+
+  // Utilisez gsap pour animer chaque lettre
+  letters.forEach((letter, i) => {
+    gsap.fromTo(
+      letter,
+      { y: "200%" }, // Commencez du bas
+      {
+        y: "50%", // Terminez à la position d'origine
+        delay: i * 0.2 + 1, // Chaque lettre est retardée de 0.2s par rapport à la précédente
+        ease: "power3.out", // Utilisez une fonction d'atténuation pour un mouvement plus naturel
+      }
+    );
+  });
+
+  // Après que toutes les lettres soient apparues, faites glisser la div vers le bas
+  gsap.to("#preloader", {
+    y: "100%",
+    ease: "power2.inOut",
+    delay: letters.length * 0.2 + 3, // Commencez à glisser 1s après que la dernière lettre soit apparue
+  });
+};
