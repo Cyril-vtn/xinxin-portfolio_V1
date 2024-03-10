@@ -59,7 +59,6 @@ a {
 .logo {
   position: fixed;
   display: flex;
-  align-items: center;
   flex-direction: column;
   padding: 1.5em;
 }
