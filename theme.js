@@ -1,6 +1,7 @@
 const themeToggle = document.getElementById("theme-toggle");
 
 const mouseTracker = document.getElementById("mouse-tracker");
+const dot = document.getElementById("dot");
 
 themeToggle.addEventListener("click", () => {
   // Inversez le thème actuel
@@ -17,12 +18,14 @@ themeToggle.addEventListener("mouseover", () => {
   mouseTracker.style.backgroundColor = "#7DC385";
   mouseTracker.style.width = "10px";
   mouseTracker.style.height = "10px";
+  dot.style.background = "var(--background-color)";
 });
 
 themeToggle.addEventListener("mouseout", () => {
   mouseTracker.style.backgroundColor = "transparent";
   mouseTracker.style.width = "100px";
   mouseTracker.style.height = "100px";
+  dot.style.background = "var(--text-color)";
 });
 
 // Au chargement de la page, appliquez le thème stocké
