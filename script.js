@@ -21,7 +21,10 @@ const slideWidth = 500 + 100; // 400px width + 100px gap
 let maxScroll = numSlides * slideWidth - window.innerWidth;
 
 // Get the length of the entire scrollable area
-const scrollLength = maxScroll;
+const scrollLength =
+  window.innerWidth <= 768
+    ? (numSlides * slideWidth - window.innerWidth) / 2
+    : numSlides * slideWidth - window.innerWidth;
 
 // Initialize mouse position and tracking speed
 let mouse = { x: 0, y: 0 };
@@ -46,7 +49,7 @@ slides.forEach((slide) => {
     // Revert mouse tracker style on mouseout
     mouseTracker.style.scale = "1";
     mouseTracker.style.borderWidth = "1px";
-    mouseTracker.style.borderColor = "black";
+    mouseTracker.style.borderColor = "var(--text-color)";
   });
 });
 
@@ -217,6 +220,7 @@ window.onload = function () {
   });
 };
 
+// Mouse tracker
 document.addEventListener("mousemove", function (e) {
   dot.style.left = e.pageX + "px";
   dot.style.top = e.pageY + "px";
