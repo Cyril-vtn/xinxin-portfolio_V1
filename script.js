@@ -39,7 +39,6 @@ function lerp(start, end, factor) {
 // Add mouseover and mouseout event listeners to each image
 slides.forEach((slide) => {
   const videoContainer = slide.querySelector(".slide_content");
-  console.log(videoContainer);
   const img = slide.querySelector("img");
   const video = slide.querySelector("video");
   const title = slide.querySelector(".slide_title");
@@ -54,6 +53,7 @@ slides.forEach((slide) => {
       video.play();
       title.style.opacity = "0";
       video.volume = 0.4;
+      video.muted = false;
       overlay.style.background = "rgba(0, 0, 0, 0.0)";
     });
     videoContainer.addEventListener("mouseleave", () => {
@@ -62,6 +62,7 @@ slides.forEach((slide) => {
       mouseTracker.style.borderWidth = "1px";
       mouseTracker.style.borderColor = "var(--text-color)";
       video.pause();
+      video.muted = true;
       video.currentTime = 0;
       title.style.opacity = "0.8";
       overlay.style.background = "rgba(0, 0, 0, 0.2)";
