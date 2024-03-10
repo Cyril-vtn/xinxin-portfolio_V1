@@ -15,7 +15,7 @@ const progressBar = document.getElementById("progress-bar");
 const numSlides = slides.length;
 
 // Set the width of each slide (including margins)
-const slideWidth = 500 + 100; // 400px width + 100px gap
+const slideWidth = 1280 + 500; // 400px width + 100px gap
 
 // Calculate the maximum scrollable width
 let maxScroll = numSlides * slideWidth - window.innerWidth;
@@ -38,7 +38,36 @@ function lerp(start, end, factor) {
 
 // Add mouseover and mouseout event listeners to each image
 slides.forEach((slide) => {
+  const videoContainer = slide.querySelector(".slide_content");
+  console.log(videoContainer);
   const img = slide.querySelector("img");
+  const video = slide.querySelector("video");
+  const title = slide.querySelector(".slide_title");
+  const overlay = slide.querySelector(".overlay");
+
+  if (video) {
+    videoContainer.addEventListener("mouseover", () => {
+      // Change mouse tracker style on mouseover
+      mouseTracker.style.scale = "1.5";
+      mouseTracker.style.borderWidth = "1.5px";
+      mouseTracker.style.borderColor = "#7DC385";
+      video.play();
+      title.style.opacity = "0";
+      video.volume = 0.4;
+      overlay.style.background = "rgba(0, 0, 0, 0.0)";
+    });
+    videoContainer.addEventListener("mouseleave", () => {
+      // Revert mouse tracker style on mouseout
+      mouseTracker.style.scale = "1";
+      mouseTracker.style.borderWidth = "1px";
+      mouseTracker.style.borderColor = "var(--text-color)";
+      video.pause();
+      video.currentTime = 0;
+      title.style.opacity = "0.8";
+      overlay.style.background = "rgba(0, 0, 0, 0.2)";
+    });
+    return;
+  }
   img.addEventListener("mouseover", () => {
     // Change mouse tracker style on mouseover
     mouseTracker.style.scale = "1.5";
@@ -66,12 +95,12 @@ function updateScaleAndPosition() {
     // Calculate scale and position
     let scale, offsetX;
     if (distanceFromCenter > 0) {
-      scale = Math.min(1.75, 1 + distanceFromCenter / window.innerWidth);
-      offsetX = (scale - 1) * 300;
+      scale = Math.min(1.2, 1 + distanceFromCenter / (window.innerWidth * 3)); // Termine la mise à l'échelle plus tard
+      offsetX = (scale - 1) * 500; // Déplacez le slide vers la droite
     } else {
       scale = Math.max(
         0.5,
-        1 - Math.abs(distanceFromCenter) / window.innerWidth
+        1 - Math.abs(distanceFromCenter) / (window.innerWidth * 2) // Termine la mise à l'échelle plus tôt
       );
       offsetX = 0;
     }
