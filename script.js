@@ -8,6 +8,7 @@ const slider = document.querySelector(".slider");
 const sliderWrapper = document.querySelector(".slider-wrapper");
 const slides = document.querySelectorAll(".slide");
 const mouseTracker = document.querySelector("#mouse-tracker");
+const dot = document.querySelector("#dot");
 const progressBar = document.getElementById("progress-bar");
 
 // Get the number of slides
@@ -215,3 +216,8 @@ window.onload = function () {
     delay: letters.length * 0.2 + 3, // Commencez à glisser 1s après que la dernière lettre soit apparue
   });
 };
+
+document.addEventListener("mousemove", function (e) {
+  dot.style.left = e.pageX + "px";
+  dot.style.top = e.pageY + "px";
+});
