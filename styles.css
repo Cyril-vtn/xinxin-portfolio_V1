@@ -42,7 +42,7 @@ body {
   background: var(--text-color);
   border-radius: 50%;
   position: absolute;
-  z-index: 9999;
+  z-index: 900;
   pointer-events: none;
 }
 
@@ -211,6 +211,37 @@ video {
   border: 0.5px solid var(--text-color);
 }
 
+.slide_button {
+  position: absolute;
+  bottom: -15%;
+  left: 50%;
+  width: 100px;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  text-wrap: nowrap;
+  z-index: 10;
+  font-family: "NeueMontreal";
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#close-fullscreen {
+  position: fixed;
+  display: none;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+  z-index: 9000;
+  color: var(--text-color);
+}
+
 img {
   width: 100%;
   height: 100%;
@@ -352,7 +383,7 @@ img {
   width: 100%;
   height: 2px;
   background: var(--background-color);
-  z-index: 9999;
+  z-index: 100;
 }
 
 #progress-bar {
@@ -365,11 +396,11 @@ img {
 }
 
 /* dark and light button */
-button {
+#theme-toggle {
   position: fixed;
   bottom: 3em;
   right: 3em;
-  z-index: 9999;
+  z-index: 100;
   cursor: none;
   font-family: "AO Mireille";
   background-color: var(--accent-color);
@@ -394,8 +425,8 @@ button {
     padding: 0 100px;
   }
   .slide {
-    width: calc(1280px / 4);
-    height: calc(720px / 4);
+    width: calc(1280px / 3.3);
+    height: calc(720px / 3.3);
   }
   .slide_title {
     font-size: 2rem;
@@ -411,6 +442,12 @@ button {
     bottom: 0;
     left: 0;
     padding: 3em;
+  }
+  .slide_button {
+    bottom: -40%;
+    left: 50%;
+    font-size: 12px;
+    text-transform: uppercase;
   }
   #dot,
   #mouse-tracker {

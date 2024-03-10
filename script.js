@@ -43,6 +43,63 @@ slides.forEach((slide) => {
   const video = slide.querySelector("video");
   const title = slide.querySelector(".slide_title");
   const overlay = slide.querySelector(".overlay");
+  const button = slide.querySelector(".slide_button");
+  const closeBtn = document.getElementById("close-fullscreen");
+
+  if (button) {
+    button.addEventListener("mouseover", () => {
+      // Change mouse tracker style on mouseover
+      // Change mouse tracker style on mouseover
+      mouseTracker.style.backgroundColor = "#7DC385";
+      mouseTracker.style.width = "10px";
+      mouseTracker.style.height = "10px";
+    });
+    button.addEventListener("mouseout", () => {
+      // Revert mouse tracker style on mouseout
+      mouseTracker.style.backgroundColor = "transparent";
+      mouseTracker.style.width = "100px";
+      mouseTracker.style.height = "100px";
+    });
+
+    button.addEventListener("click", () => {
+      // Create a new video element
+      const fullscreenVideo = document.createElement("video");
+
+      // Set the poster of the video
+      fullscreenVideo.poster = `/images/${video.title}.png`; // Replace with the path to your poster
+
+      // Set the video controls
+      fullscreenVideo.controls = true;
+      fullscreenVideo.controlsList = "nodownload";
+
+      closeBtn.style.display = "block";
+      closeBtn.addEventListener("click", function () {
+        if (fullscreenVideo && document.body.contains(fullscreenVideo)) {
+          document.body.removeChild(fullscreenVideo);
+          closeBtn.style.display = "none";
+        }
+      });
+
+      // Set the source of the video
+      fullscreenVideo.src = `/videos/${video.title}_final.mp4`; // Replace with the path to your video
+      // Set the video to play in fullscreen
+      fullscreenVideo.style.position = "fixed";
+      fullscreenVideo.style.width = "100%";
+      fullscreenVideo.style.height = "100%";
+      fullscreenVideo.style.left = "0";
+      fullscreenVideo.style.top = "0";
+      fullscreenVideo.style.zIndex = "2000";
+      fullscreenVideo.style.cursor = "default";
+
+      // Append the video to the body
+      document.body.appendChild(fullscreenVideo);
+
+      // When the video ends, remove it from the body
+      fullscreenVideo.addEventListener("ended", () => {
+        document.body.removeChild(fullscreenVideo);
+      });
+    });
+  }
 
   if (video) {
     videoContainer.addEventListener("mouseover", () => {
@@ -53,7 +110,6 @@ slides.forEach((slide) => {
       video.play();
       title.style.opacity = "0";
       video.volume = 0.4;
-      video.muted = false;
       overlay.style.background = "rgba(0, 0, 0, 0.0)";
     });
     videoContainer.addEventListener("mouseleave", () => {
@@ -62,7 +118,7 @@ slides.forEach((slide) => {
       mouseTracker.style.borderWidth = "1px";
       mouseTracker.style.borderColor = "var(--text-color)";
       video.pause();
-      video.muted = true;
+      video.load();
       video.currentTime = 0;
       title.style.opacity = "0.8";
       overlay.style.background = "rgba(0, 0, 0, 0.2)";
@@ -138,7 +194,7 @@ function update() {
 // Function to calculate maxScroll
 function calculateMaxScroll() {
   if (window.innerWidth <= 768) {
-    maxScroll = (numSlides * slideWidth - window.innerWidth) / 3.5;
+    maxScroll = (numSlides * slideWidth - window.innerWidth) / 3;
     speed = 0.4;
   } else {
     maxScroll = numSlides * slideWidth - window.innerWidth;
