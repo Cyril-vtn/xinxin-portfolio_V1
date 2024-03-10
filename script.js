@@ -96,6 +96,7 @@ slides.forEach((slide) => {
 
       // When the video ends, remove it from the body
       fullscreenVideo.addEventListener("ended", () => {
+        closeBtn.style.display = "none";
         document.body.removeChild(fullscreenVideo);
       });
     });
