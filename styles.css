@@ -188,6 +188,7 @@ img:hover {
   color: var(--text-color);
 }
 #nav-button {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -374,5 +375,8 @@ button {
   #mouse-tracker {
     display: none;
     border: none;
+  }
+  #nav-button {
+    display: block;
   }
 }
