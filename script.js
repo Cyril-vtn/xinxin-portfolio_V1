@@ -15,7 +15,7 @@ const progressBar = document.getElementById("progress-bar");
 const numSlides = slides.length;
 
 // Set the width of each slide (including margins)
-const slideWidth = 1280 + 500; // 400px width + 100px gap
+const slideWidth = 1280 + 400; // 400px width + 100px gap
 
 // Calculate the maximum scrollable width
 let maxScroll = numSlides * slideWidth - window.innerWidth;
@@ -23,7 +23,7 @@ let maxScroll = numSlides * slideWidth - window.innerWidth;
 // Get the length of the entire scrollable area
 const scrollLength =
   window.innerWidth <= 768
-    ? (numSlides * slideWidth - window.innerWidth) / 2
+    ? (numSlides * slideWidth - window.innerWidth) / 3.5
     : numSlides * slideWidth - window.innerWidth;
 
 // Initialize mouse position and tracking speed
@@ -137,7 +137,7 @@ function update() {
 // Function to calculate maxScroll
 function calculateMaxScroll() {
   if (window.innerWidth <= 768) {
-    maxScroll = (numSlides * slideWidth - window.innerWidth) / 2;
+    maxScroll = (numSlides * slideWidth - window.innerWidth) / 3.5;
     speed = 0.4;
   } else {
     maxScroll = numSlides * slideWidth - window.innerWidth;
