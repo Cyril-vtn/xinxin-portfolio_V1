@@ -1,7 +1,7 @@
 // Initialize variables for target and current scroll position, and easing factor
 let target = 0;
 let current = 0;
-let ease = 0.075;
+let ease = 0.09;
 
 // Get DOM elements
 const slider = document.querySelector(".slider");
@@ -58,8 +58,12 @@ function updateScaleAndPosition() {
   slides.forEach((slide) => {
     // Calculate slide position and scale
     const rect = slide.getBoundingClientRect();
+
+    // Calculate distance from center
     const centerPosition = (rect.left + rect.right) / 2;
     const distanceFromCenter = centerPosition - window.innerWidth / 2;
+
+    // Calculate scale and position
     let scale, offsetX;
     if (distanceFromCenter > 0) {
       scale = Math.min(1.75, 1 + distanceFromCenter / window.innerWidth);
