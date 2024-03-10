@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "AO Mireille";
+  src: url("font/AO Mireille.ttf");
+}
+
+@font-face {
+  font-family: "NeueMontreal";
+  src: url("font/NeueMontreal-Regular.otf");
+}
+
 :root {
   --background-color: #f8f8f8;
   --text-color: #444444;
@@ -39,6 +49,8 @@ a {
   color: var(--accent-color);
   font-weight: 500;
 }
+  font-family: "AO Mireille";
+  font-family: "NeueMontreal";
   color: var(--text-color);
 
 .sidebar {
@@ -49,7 +61,7 @@ a {
   transform: rotate(-90deg) translate(-100%, 0);
   transform-origin: left top;
   padding: 1.5em 3em;
-  font-family: "PP Neue Montreal";
+  font-family: "AO Mireille";
 }
 
 .sidebar > div:nth-child(1) {
@@ -63,7 +75,7 @@ a {
 }
 
 p#header {
-  font-family: "Timmons NY 2.0";
+  font-family: "AO Mireille";
   text-transform: uppercase;
   font-size: 9rem;
   line-height: 85%;
@@ -72,7 +84,7 @@ p#header {
 }
 
 p#subheader {
-  font-family: "Timmons NY 2.0";
+  font-family: "NeueMontreal";
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 150%;
@@ -133,8 +145,7 @@ img:hover {
   position: absolute;
   padding: 1.5em;
   right: 0;
-  font-family: "PP Neue Montreal";
-  font-weight: 500;
+  font-family: "NeueMontreal";
   z-index: 10;
   transition: all 0.3s ease;
   color: var(--text-color);
@@ -174,7 +185,7 @@ img:hover {
 }
 
 .arrow-text {
-  font-family: "PP Neue Montreal";
+  font-family: "AO Mireille";
   font-size: 1.5rem;
   position: absolute;
   top: 60px;
@@ -235,13 +246,14 @@ img:hover {
 
 #preloader span {
   font-size: 10vw;
-  font-family: "PP Neue Montreal";
+  font-family: "AO Mireille";
   font-weight: 500;
   color: var(--text-color);
   height: 100%;
 }
   background: var(--background-color);
   background: var(--text-color);
+  font-family: "AO Mireille";
   background-color: var(--accent-color);
 
 @media (max-width: 1150px) {
