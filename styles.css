@@ -56,6 +56,10 @@ a {
   cursor: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .logo {
   position: fixed;
   display: flex;
@@ -177,7 +181,7 @@ img:hover {
 
 .social {
   position: absolute;
-  padding: 24px;
+  padding: 2em;
   right: 0;
   font-family: "NeueMontreal";
   font-size: 12px;
@@ -186,30 +190,6 @@ img:hover {
   z-index: 10;
   transition: all 0.3s ease;
   color: var(--text-color);
-}
-#nav-button {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 1.5em;
-  color: var(--text-color);
-  transition: all 0.3s ease;
-}
-
-#mobile-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-
-  font-family: "NeueMontreal";
-  font-size: 12px;
-  line-height: 1.4;
-  padding: 24px;
-  opacity: 0.6;
-  z-index: 10;
-  color: var(--text-color);
-  transition: all 0.3s ease;
 }
 
 .social a {
@@ -369,14 +349,13 @@ button {
     font-size: 1rem;
   }
   .social {
-    display: none;
+    bottom: 0;
+    left: 0;
+    padding: 3em;
   }
   #dot,
   #mouse-tracker {
     display: none;
     border: none;
-  }
-  #nav-button {
-    display: block;
   }
 }
