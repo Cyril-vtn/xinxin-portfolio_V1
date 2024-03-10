@@ -251,8 +251,26 @@ img:hover {
   color: var(--text-color);
   height: 100%;
 }
+
+#progress-bar-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
   background: var(--background-color);
+  z-index: 9999;
+}
+
+#progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
   background: var(--text-color);
+}
+
 /* dark and light button */
 button {
   position: fixed;

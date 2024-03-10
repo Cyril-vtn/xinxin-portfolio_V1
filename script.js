@@ -8,6 +8,7 @@ const slider = document.querySelector(".slider");
 const sliderWrapper = document.querySelector(".slider-wrapper");
 const slides = document.querySelectorAll(".slide");
 const mouseTracker = document.querySelector("#mouse-tracker");
+const progressBar = document.getElementById("progress-bar");
 
 // Get the number of slides
 const numSlides = slides.length;
@@ -17,6 +18,9 @@ const slideWidth = 500 + 100; // 400px width + 100px gap
 
 // Calculate the maximum scrollable width
 let maxScroll = numSlides * slideWidth - window.innerWidth;
+
+// Get the length of the entire scrollable area
+const scrollLength = maxScroll;
 
 // Initialize mouse position and tracking speed
 let mouse = { x: 0, y: 0 };
@@ -89,6 +93,8 @@ function update() {
 
   // Request next animation frame
   requestAnimationFrame(update);
+
+  progressBar.style.width = `${(current / scrollLength) * 100}%`;
 }
 
 // Function to calculate maxScroll
