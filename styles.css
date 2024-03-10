@@ -394,8 +394,15 @@ button {
     padding: 0 100px;
   }
   .slide {
-    width: 200px;
-    height: 300px;
+    width: calc(1280px / 4);
+    height: calc(720px / 4);
+  }
+  .slide_title {
+    font-size: 2rem;
+  }
+  .slide_text_client,
+  .slide_text_work {
+    font-size: 8px;
   }
   .arrow-text {
     font-size: 1rem;
