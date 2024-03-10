@@ -315,8 +315,8 @@ button {
   bottom: 3em;
   right: 3em;
   z-index: 9999;
+  cursor: none;
   font-family: "AO Mireille";
-  pointer-events: auto;
   background-color: var(--accent-color);
   border-radius: 30px;
   width: 18px;
