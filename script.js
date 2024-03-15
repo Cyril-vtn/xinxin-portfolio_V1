@@ -29,13 +29,13 @@ const progressBar = document.getElementById("progress-bar");
 const numSlides = slides.length;
 
 // Set the width of each slide (including margins)
-let slideWidth = 1200 + 400;
+let slideWidth;
 
 // Calculate the maximum scrollable width
-let maxScroll = numSlides * slideWidth - window.innerWidth;
+let maxScroll;
 
 // Get the length of the entire scrollable area
-let scrollLength = numSlides * slideWidth - window.innerWidth;
+let scrollLength;
 
 // Initialize mouse position and tracking speed
 let mouse = { x: 0, y: 0 };
@@ -209,14 +209,12 @@ function calculateMaxScroll() {
   videoHeight = (windowWidth * 9) / 16;
   const videoElements = document.querySelectorAll(".slide");
 
-  let padding = window.innerWidth <= 768 ? 200 : 400;
   // Calculez la largeur en fonction de la largeur de la fenêtre
-  slideWidth = windowWidth + padding;
-  console.log(slideWidth);
-  maxScroll = numSlides * slideWidth - window.innerWidth;
+  slideWidth = document.querySelector(".slider-wrapper").offsetWidth;
+  maxScroll = slideWidth - window.innerWidth;
   speed = 0.4;
 
-  scrollLength = numSlides * slideWidth - window.innerWidth;
+  scrollLength = slideWidth - window.innerWidth;
 
   // Réappliquez la largeur et la hauteur
   videoElements.forEach((videoElement) => {
@@ -226,6 +224,7 @@ function calculateMaxScroll() {
 }
 
 // Call calculateMaxScroll once at page load
+document.addEventListener("DOMContentLoaded", calculateMaxScroll);
 calculateMaxScroll();
 
 // Call calculateMaxScroll on window resize
