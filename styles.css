@@ -140,7 +140,7 @@ p#subheader {
 .slider-wrapper {
   position: fixed;
   top: 0;
-  padding: 0 600px;
+  padding: 0 40vw;
   height: 100%;
   display: flex;
   align-items: center;
@@ -240,7 +240,7 @@ video {
   text-wrap: nowrap;
   z-index: 10;
   font-family: "NeueMontreal";
-  font-size: 14px;
+  font-size: clamp(10px, 1.5vw, 1.5rem);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   border-radius: 0;
@@ -436,9 +436,6 @@ img {
   .sidebar {
     display: none;
   }
-  .slider-wrapper {
-    padding: 0 100px;
-  }
 
   .slide_text_client,
   .slide_text_work {
@@ -455,8 +452,6 @@ img {
   .slide_button {
     bottom: -40%;
     left: 50%;
-    font-size: 12px;
-    text-transform: uppercase;
   }
   #dot,
   #mouse-tracker {
