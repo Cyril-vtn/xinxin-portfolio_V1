@@ -11,7 +11,7 @@ let videoHeight = (windowWidth * 9) / 16;
 
 // Appliquez la largeur et la hauteur à l'élément vidéo
 let videoElements = document.querySelectorAll(".slide");
-console.log(videoElements);
+
 videoElements.forEach((videoElement) => {
   videoElement.style.width = windowWidth + "px";
   videoElement.style.height = videoHeight + "px";
@@ -182,17 +182,11 @@ function updateScaleAndPosition() {
 // Function to update scroll position and mouse tracker position
 function update() {
   current = lerp(current, target, ease);
-  pos.x = lerp(pos.x, mouse.x, speed);
-  pos.y = lerp(pos.y, mouse.y, speed);
 
   // Update slider wrapper position
   gsap.set(".slider-wrapper", {
     x: -current,
   });
-
-  // Update mouse tracker position
-  mouseTracker.style.left = `${pos.x}px`;
-  mouseTracker.style.top = `${pos.y}px`;
 
   // Update slide scale and position
   updateScaleAndPosition();
@@ -221,6 +215,8 @@ function calculateMaxScroll() {
     videoElement.style.width = windowWidth + "px";
     videoElement.style.height = videoHeight + "px";
   });
+
+  update();
 }
 
 // Call calculateMaxScroll once at page load
