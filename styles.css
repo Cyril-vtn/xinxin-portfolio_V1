@@ -114,7 +114,7 @@ a {
 p#header {
   font-family: "AO Mireille";
   text-transform: uppercase;
-  font-size: 9rem;
+  font-size: clamp(10px, 9vw, 9rem);
   line-height: 85%;
   margin-bottom: 2rem;
   color: var(--text-color);
@@ -150,7 +150,7 @@ p#subheader {
 .slide_title {
   font-family: "AO Mireille";
   font-weight: 300;
-  font-size: 6rem;
+  font-size: clamp(10px, 5vw, 5rem);
   position: absolute;
   text-transform: uppercase;
   top: 50%;
@@ -177,6 +177,21 @@ p#subheader {
   width: 1280px;
   height: 720px;
   background: var(--background-color);
+}
+
+#video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 100% / (16/9) */
+  overflow: hidden;
+}
+
+#video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .slide_text_client {
@@ -424,13 +439,7 @@ img {
   .slider-wrapper {
     padding: 0 100px;
   }
-  .slide {
-    width: calc(1280px / 3.3);
-    height: calc(720px / 3.3);
-  }
-  .slide_title {
-    font-size: 2rem;
-  }
+
   .slide_text_client,
   .slide_text_work {
     font-size: 8px;
