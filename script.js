@@ -3,6 +3,20 @@ let target = 0;
 let current = 0;
 let ease = 0.09;
 
+// Obtenez la largeur de la fenêtre
+let windowWidth = window.innerWidth;
+
+// Calculez la hauteur en conservant le ratio de 16/9
+let videoHeight = (windowWidth * 9) / 16;
+
+// Appliquez la largeur et la hauteur à l'élément vidéo
+let videoElements = document.querySelectorAll(".slide");
+console.log(videoElements);
+videoElements.forEach((videoElement) => {
+  videoElement.style.width = windowWidth + "px";
+  videoElement.style.height = videoHeight + "px";
+});
+
 // Get DOM elements
 const slider = document.querySelector(".slider");
 const sliderWrapper = document.querySelector(".slider-wrapper");
@@ -15,16 +29,13 @@ const progressBar = document.getElementById("progress-bar");
 const numSlides = slides.length;
 
 // Set the width of each slide (including margins)
-const slideWidth = 1280 + 400; // 400px width + 100px gap
+let slideWidth = 1200 + 400;
 
 // Calculate the maximum scrollable width
 let maxScroll = numSlides * slideWidth - window.innerWidth;
 
 // Get the length of the entire scrollable area
-const scrollLength =
-  window.innerWidth <= 768
-    ? (numSlides * slideWidth - window.innerWidth) / 3.5
-    : numSlides * slideWidth - window.innerWidth;
+let scrollLength = numSlides * slideWidth - window.innerWidth;
 
 // Initialize mouse position and tracking speed
 let mouse = { x: 0, y: 0 };
@@ -194,13 +205,24 @@ function update() {
 
 // Function to calculate maxScroll
 function calculateMaxScroll() {
-  if (window.innerWidth <= 768) {
-    maxScroll = (numSlides * slideWidth - window.innerWidth) / 3;
-    speed = 0.4;
-  } else {
-    maxScroll = numSlides * slideWidth - window.innerWidth;
-    speed = 0.1;
-  }
+  windowWidth = window.innerWidth / 1.5;
+  videoHeight = (windowWidth * 9) / 16;
+  const videoElements = document.querySelectorAll(".slide");
+
+  let padding = window.innerWidth <= 768 ? 200 : 400;
+  // Calculez la largeur en fonction de la largeur de la fenêtre
+  slideWidth = windowWidth + padding;
+  console.log(slideWidth);
+  maxScroll = numSlides * slideWidth - window.innerWidth;
+  speed = 0.4;
+
+  scrollLength = numSlides * slideWidth - window.innerWidth;
+
+  // Réappliquez la largeur et la hauteur
+  videoElements.forEach((videoElement) => {
+    videoElement.style.width = windowWidth + "px";
+    videoElement.style.height = videoHeight + "px";
+  });
 }
 
 // Call calculateMaxScroll once at page load
