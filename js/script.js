@@ -311,11 +311,12 @@ window.onload = function () {
   letters.forEach((letter, i) => {
     gsap.fromTo(
       letter,
-      { y: "200%" }, // Commencez du bas
+      { y: "200%", opacity: 0 },
       {
-        y: "50%", // Terminez à la position d'origine
-        delay: i * 0.2 + 1, // Chaque lettre est retardée de 0.2s par rapport à la précédente
-        ease: "power3.out", // Utilisez une fonction d'atténuation pour un mouvement plus naturel
+        y: "0%",
+        delay: i * 0.2 + 1,
+        ease: "power3.out",
+        opacity: 1,
       }
     );
   });

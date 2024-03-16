@@ -366,7 +366,6 @@ img {
   height: 100%;
   z-index: 9999;
   background: var(--background-color);
-  line-height: 4px;
   user-select: none;
 }
 
